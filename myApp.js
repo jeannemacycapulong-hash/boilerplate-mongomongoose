@@ -10,3 +10,4 @@ const personSchema = new mongoose.Schema({
 });
 
 let Person = mongoose.model('Person', personSchema);
+exports.PersonModel = Person;
