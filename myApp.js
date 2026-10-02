@@ -24,5 +24,20 @@ const createAndSavePerson = function(done) {
   });
 };
 
+const arrayOfPeople = [
+  { name: "Mary", age: 30, favoriteFoods: ["Burrito"] },
+  { name: "John", age: 25, favoriteFoods: ["Vegetables"] },
+  { name: "Bob", age: 40, favoriteFoods: ["Pizza"] }
+];
+
+const createManyPeople = function(arrayOfPeople, done) {
+  Person.create(arrayOfPeople, function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
+exports.arrayOfPeople = arrayOfPeople;
+exports.createManyPeople = createManyPeople;
