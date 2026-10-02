@@ -87,6 +87,13 @@ const findAndUpdate = function(personName, done) {
   );
 };
 
+const removeById = function(personId, done) {
+  Person.findByIdAndRemove(personId, function(err, removedPerson) {
+    if (err) return console.error(err);
+    done(null, removedPerson);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
@@ -96,3 +103,4 @@ exports.findOneByFood = findOneByFood;
 exports.findPersonById = findPersonById;
 exports.findEditThenSave = findEditThenSave;
 exports.findAndUpdate = findAndUpdate;
+exports.removeById = removeById;
