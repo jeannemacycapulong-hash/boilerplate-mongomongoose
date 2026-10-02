@@ -73,6 +73,20 @@ const findEditThenSave = function(personId, done) {
   });
 };
 
+const findAndUpdate = function(personName, done) {
+  const ageToSet = 20;
+
+  Person.findOneAndUpdate(
+    { name: personName },
+    { age: ageToSet },
+    { new: true },
+    function(err, updatedPerson) {
+      if (err) return console.error(err);
+      done(null, updatedPerson);
+    }
+  );
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
@@ -81,3 +95,4 @@ exports.findPeopleByName = findPeopleByName;
 exports.findOneByFood = findOneByFood;
 exports.findPersonById = findPersonById;
 exports.findEditThenSave = findEditThenSave;
+exports.findAndUpdate = findAndUpdate;
