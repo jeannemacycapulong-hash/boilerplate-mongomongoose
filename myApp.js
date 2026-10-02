@@ -51,9 +51,17 @@ const findOneByFood = function(food, done) {
   });
 };
 
+const findPersonById = function(personId, done) {
+  Person.findById(personId, function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
 exports.createManyPeople = createManyPeople;
 exports.findPeopleByName = findPeopleByName;
 exports.findOneByFood = findOneByFood;
+exports.findPersonById = findPersonById;
