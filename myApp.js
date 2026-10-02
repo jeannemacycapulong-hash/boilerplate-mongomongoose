@@ -94,6 +94,14 @@ const removeById = function(personId, done) {
   });
 };
 
+const removeManyPeople = function(done) {
+  const nameToRemove = "Mary";
+  Person.remove({ name: nameToRemove }, function(err, result) {
+    if (err) return console.error(err);
+    done(null, result);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
@@ -104,3 +112,4 @@ exports.findPersonById = findPersonById;
 exports.findEditThenSave = findEditThenSave;
 exports.findAndUpdate = findAndUpdate;
 exports.removeById = removeById;
+exports.removeManyPeople = removeManyPeople;
