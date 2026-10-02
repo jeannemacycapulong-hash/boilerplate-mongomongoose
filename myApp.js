@@ -44,8 +44,16 @@ const findPeopleByName = function(personName, done) {
   });
 };
 
+const findOneByFood = function(food, done) {
+  Person.findOne({ favoriteFoods: food }, function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
 exports.createManyPeople = createManyPeople;
 exports.findPeopleByName = findPeopleByName;
+exports.findOneByFood = findOneByFood;
