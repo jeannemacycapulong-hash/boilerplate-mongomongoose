@@ -102,6 +102,19 @@ const removeManyPeople = function(done) {
   });
 };
 
+const queryChain = function(done) {
+  const foodToSearch = "burrito";
+
+  Person.find({ favoriteFoods: foodToSearch })
+    .sort({ name: 1 })
+    .limit(2)
+    .select({ age: 0 })
+    .exec(function(err, data) {
+      if (err) return console.error(err);
+      done(null, data);
+    });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
@@ -113,3 +126,4 @@ exports.findEditThenSave = findEditThenSave;
 exports.findAndUpdate = findAndUpdate;
 exports.removeById = removeById;
 exports.removeManyPeople = removeManyPeople;
+exports.queryChain = queryChain;
