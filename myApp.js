@@ -58,6 +58,21 @@ const findPersonById = function(personId, done) {
   });
 };
 
+const findEditThenSave = function(personId, done) {
+  const foodToAdd = "hamburger";
+
+  Person.findById(personId, function(err, person) {
+    if (err) return console.error(err);
+    
+    person.favoriteFoods.push(foodToAdd);
+
+    person.save(function(err, updatedPerson) {
+      if (err) return console.error(err);
+      done(null, updatedPerson);
+    });
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
@@ -65,3 +80,4 @@ exports.createManyPeople = createManyPeople;
 exports.findPeopleByName = findPeopleByName;
 exports.findOneByFood = findOneByFood;
 exports.findPersonById = findPersonById;
+exports.findEditThenSave = findEditThenSave;
