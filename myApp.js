@@ -37,7 +37,15 @@ const createManyPeople = function(arrayOfPeople, done) {
   });
 };
 
+const findPeopleByName = function(personName, done) {
+  Person.find({ name: personName }, function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
+};
+
 exports.PersonModel = Person;
 exports.createAndSavePerson = createAndSavePerson;
 exports.arrayOfPeople = arrayOfPeople;
 exports.createManyPeople = createManyPeople;
+exports.findPeopleByName = findPeopleByName;
